@@ -12,6 +12,19 @@ class CalculatorBrain {
     enum Op{
         case Operand(Double)
         case Operator(Character)
+        
+        var description : String {
+            get {
+                switch self{
+                case .Operand(let operand):
+                    return "\(operand)"
+                case .Operator(let oper):
+                    return "\(oper)"
+                default:
+                    return ""
+                }
+            }
+        }
     }
     
     private var postfixStack = [Op]()
@@ -21,7 +34,7 @@ class CalculatorBrain {
 
     func pushOperand(operand : Double){
         postfixStack.append(Op.Operand(operand))
-        println("stack:\(postfixStack.debugDescription)");
+        println("stack:\(postfixStack.description)");
 
     }
     
@@ -34,7 +47,7 @@ class CalculatorBrain {
             while(!operatorStack.isEmpty && !jump){
                 var preOper = operatorStack.removeLast()
                 switch(preOper){
-                case "+","-":
+                case "+","−":
                     if(oper != "×" && oper != "÷"){
                         postfixStack.append(Op.Operator(preOper))
                     }else{
@@ -52,8 +65,8 @@ class CalculatorBrain {
             }
              operatorStack.append(oper)
         }
-       
-        println("stack:\(postfixStack.debugDescription)");
+        println("\(Op.Operator(oper).description)")
+        println("stack:\(postfixStack)");
         
     }
     
