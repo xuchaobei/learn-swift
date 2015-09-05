@@ -16,9 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Emj-2J-AtB" customClass="FaceView" customModule="Happiness" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <view contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Emj-2J-AtB" customClass="FaceView" customModule="Happiness" customModuleProvider="target">
+                                <rect key="frame" x="20" y="7" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="XAQ-HY-xGJ" appends="YES" id="h3u-2k-tHT"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -29,8 +33,16 @@
                             <constraint firstItem="Emj-2J-AtB" firstAttribute="top" secondItem="DrK-Tx-CzX" secondAttribute="top" id="pRd-0O-pqy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="faceView" destination="Emj-2J-AtB" id="7Kv-JC-qg7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glT-we-mLL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="XAQ-HY-xGJ">
+                    <connections>
+                        <action selector="changeHappiness:" destination="hb3-wa-3Ra" id="fZa-xj-nNg"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="150" y="250"/>
         </scene>
